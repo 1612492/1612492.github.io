@@ -1,0 +1,13 @@
+---
+import { colorToClasses } from '../utils/tag';
+
+export interface Props {
+  color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<div class={`rounded-md px-2 py-1 text-xs font-semibold ${colorToClasses[color]}`}>
+  <slot />
+</div>

@@ -1,0 +1,68 @@
+---
+import { ColorTags } from '../utils/tag';
+import Project from './Project.astro';
+import Tag from './Tag.astro';
+---
+
+<div class="mx-auto max-w-screen-lg px-3 py-6">
+  <div class="mb-6 text-2xl font-bold">
+    Recent{' '}
+    <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">
+      Projects
+    </span>
+  </div>
+  <div class="flex flex-col gap-6">
+    <Project
+      name="Project 1"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum. Nunc non posuere consectetur, justo erat semper enim, non hendrerit dui odio id enim."
+      link="/"
+    >
+      <img
+        slot="thumbnail"
+        class="h-36 w-36 hover:translate-y-1"
+        src="/assets/images/project-web-design.png"
+        alt="Project Web Design"
+      />
+      <Fragment slot="category">
+        <Tag color={ColorTags.FUCHSIA}>Astro.js</Tag>
+        <Tag color={ColorTags.LIME}>Web design</Tag>
+        <Tag color={ColorTags.SKY}>Tailwind.css</Tag>
+        <Tag color={ColorTags.ROSE}>TypeScript</Tag>
+      </Fragment>
+    </Project>
+    <Project
+      name="Project 2"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum. Nunc non posuere consectetur, justo erat semper enim, non hendrerit dui odio id enim."
+      link="/"
+    >
+      <img
+        slot="thumbnail"
+        class="h-36 w-36 hover:translate-y-1"
+        src="/assets/images/project-fire.png"
+        alt="Project Fire"
+      />
+      <Fragment slot="category">
+        <Tag color={ColorTags.VIOLET}>Next.js</Tag>
+        <Tag color={ColorTags.EMERALD}>Blog</Tag>
+        <Tag color={ColorTags.YELLOW}>JavaScript</Tag>
+      </Fragment>
+    </Project>
+    <Project
+      name="Project 3"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum. Nunc non posuere consectetur, justo erat semper enim, non hendrerit dui odio id enim."
+      link="/"
+    >
+      <img
+        slot="thumbnail"
+        class="h-36 w-36 hover:translate-y-1"
+        src="/assets/images/project-maps.png"
+        alt="Project Maps"
+      />
+      <Fragment slot="category">
+        <Tag color={ColorTags.FUCHSIA}>Astro.js</Tag>
+        <Tag color={ColorTags.INDIGO}>Bootstrap</Tag>
+        <Tag color={ColorTags.ROSE}>TypeScript</Tag>
+      </Fragment>
+    </Project>
+  </div>
+</div>

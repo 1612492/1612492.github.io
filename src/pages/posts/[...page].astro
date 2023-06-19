@@ -1,0 +1,65 @@
+---
+import { format } from 'date-fns';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/Contact.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await Astro.glob('./*.md');
+  const sortedPosts = posts.sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+
+  return paginate(sortedPosts, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={page.currentPage}>
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold">Random title here</h1>
+      <div class="mt-3 text-gray-200">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        page.data.map((post) => (
+          <a class="hover:translate-y-1" href={post.url}>
+            <div class="overflow-hidden rounded-md bg-slate-800">
+              <div class="aspect-h-2 aspect-w-3">
+                <img
+                  class="h-full w-full object-cover object-center"
+                  src={post.frontmatter.imgSrc}
+                  alt={post.frontmatter.imgAlt}
+                />
+              </div>
+
+              <div class="px-3 pb-6 pt-4 text-center">
+                <h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
+
+                <div class="mt-1 text-xs text-gray-400">
+                  {format(new Date(post.frontmatter.pubDate), 'LLL d, yyyy')}
+                </div>
+
+                <div class="mt-2 text-sm">{post.frontmatter.description}</div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="flex justify-center gap-8">
+      {page.url.prev && <a href={page.url.prev}>← Newer Posts</a>}
+      {page.url.next && <a href={page.url.next}>Older Posts →</a>}
+    </div>
+  </div>
+
+  <Contact />
+</BaseLayout>

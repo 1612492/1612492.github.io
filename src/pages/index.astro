@@ -1,8 +1,21 @@
 ---
-import BaseLayout from '../layouts/BayLayout.astro';
-import Modal from '../components/Modal.astro';
+import Contact from '../components/Contact.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import RecentPosts from '../components/RecentPosts.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = await Astro.glob('./posts/*.md');
+const lastThreePosts = posts
+  .sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  )
+  .slice(0, 3);
 ---
 
-<BaseLayout title="Home page">
-  <Modal />
+<BaseLayout title="Home">
+  <Hero />
+  <Projects />
+  <RecentPosts posts={lastThreePosts} />
+  <Contact />
 </BaseLayout>

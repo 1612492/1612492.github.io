@@ -1,0 +1,48 @@
+---
+import { format } from 'date-fns';
+
+const { posts } = Astro.props;
+---
+
+<div class="mx-auto max-w-screen-lg px-3 py-6">
+  <div class="mb-6 text-2xl font-bold">
+    <div class="flex items-baseline justify-between">
+      <div>
+        <span>Recent</span>
+        <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent"
+          >Posts</span
+        >
+      </div>
+      <div class="text-sm">
+        <a href="/posts">View all Posts →</a>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+    {
+      posts.map((post) => (
+        <a class="hover:translate-y-1" href={post.url}>
+          <div class="overflow-hidden rounded-md bg-slate-800">
+            <div class="aspect-h-2 aspect-w-3">
+              <img
+                class="h-full w-full object-cover object-center"
+                src={post.frontmatter.imgSrc}
+                alt={post.frontmatter.imgAlt}
+              />
+            </div>
+
+            <div class="px-3 pb-6 pt-4 text-center">
+              <h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
+
+              <div class="mt-1 text-xs text-gray-400">
+                {format(new Date(post.frontmatter.pubDate), 'LLL d, yyyy')}
+              </div>
+
+              <div class="mt-2 text-sm">{post.frontmatter.description}</div>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>

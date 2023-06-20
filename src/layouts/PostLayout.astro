@@ -4,9 +4,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Contact from '../components/Contact.astro';
 
 const { frontmatter } = Astro.props;
+const title = 'Blog - ' + frontmatter.title;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={title}>
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <h1 class="text-center text-3xl font-bold">{frontmatter.title}</h1>
 

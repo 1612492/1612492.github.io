@@ -13,8 +13,16 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Eric's blog" />
+    <meta name="description" content="My personal blog" />
     <meta name="theme-color" content="#0f172a" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@phatvo0509" />
+    <meta name="twitter:title" content="Eric's Blog" />
+    <meta name="twitter:image" content="https://eric-d.netlify.app/assets/images/twitter-image.jpeg" />
+    <meta property="og:title" content="Eric's Blog" />
+    <meta property="og:url" content="https://eric-d.netlify.app" />
+    <meta property="og:description" content="My personal blog" />
+    <meta property="og:image" content="https://eric-d.netlify.app/assets/images/twitter-image.jpeg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -26,6 +34,18 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82FQ53MZ8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-82FQ53MZ8V');
+    </script>
   </head>
   <body class="bg-slate-900 font-inter text-gray-100">
     <Navbar />

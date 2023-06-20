@@ -9,15 +9,15 @@ imgAlt: 'Flexbox'
 
 ## display:
 
-![container.svg](/src/images/flexbox-container.svg)
+![container.svg](/assets/images/flexbox-container.svg)
 
 ## flex-direction
 
-![flex-direction.svg](/src/images/flexbox-flex-direction.svg)
+![flex-direction.svg](/assets/images/flexbox-flex-direction.svg)
 
 ## flex-wrap
 
-![flex-wrap.svg](/src/images/flexbox-flex-wrap.svg)
+![flex-wrap.svg](/assets/images/flexbox-flex-wrap.svg)
 
 ## flex-flow
 
@@ -38,16 +38,16 @@ align items in the main axis
 - **space-around**: Items display with equal spacing around them.
 - **space-evenly**: Items display with equal spacing between them and a haft spacing with the right and the left side.
 
-![justify-content.svg](/src/images/flexbox-justify-content.svg)
+![justify-content.svg](/assets/images/flexbox-justify-content.svg)
 
 ## align-items
 
-![align-items.svg](/src/images/flexbox-align-items.svg)
+![align-items.svg](/assets/images/flexbox-align-items.svg)
 
 ## align-content
 
-![align-content.svg](/src/images/flexbox-align-content.svg)
+![align-content.svg](/assets/images/flexbox-align-content.svg)
 
 ## gap row-gap column-gap
 
-![gap.svg](/src/images/flexbox-gap.svg)
+![gap.svg](/assets/images/flexbox-gap.svg)

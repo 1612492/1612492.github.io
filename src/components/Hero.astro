@@ -1,3 +1,8 @@
+---
+import { ColorTags } from '../utils/tag';
+import Tag from './Tag.astro';
+---
+
 <div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
     <div>
@@ -9,42 +14,44 @@
       </h1>
 
       <p class="mt-6 text-xl leading-9">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus{' '}
-        <a class="text-cyan-400 hover:underline" href="/"> malesuada</a>{' '}nisi tellus, non
-        imperdiet nisi tempor at. Lorem ipsum dolor sit amet,{' '}
-        <a class="text-cyan-400 hover:underline" href="/"> consectetur</a>{' '}adipiscing elit, sed
-        do eiusmod tempor incididunt ut labore et dolore.
+        With more than 3 years of experience, I am a proficient and qualified <span
+          class="text-cyan-400"
+          >front-end
+        </span>developer. I am also knowledgeable about <span class="text-cyan-400">back-end</span> and
+        <span class="text-cyan-400">blockchain</span> technology thanks to my curiosity and love of technology.
       </p>
 
-      <div class="mt-3 flex gap-1">
-        <a href="/">
-          <img
-            class="h-12 w-12 hover:translate-y-1"
-            src="/assets/images/twitter-icon.png"
-            alt="Twitter icon"
-          />
-        </a>
-        <a href="/">
-          <img
-            class="h-12 w-12 hover:translate-y-1"
-            src="/assets/images/facebook-icon.png"
-            alt="Facebook icon"
-          />
-        </a>
-        <a href="/">
-          <img
-            class="h-12 w-12 hover:translate-y-1"
-            src="/assets/images/linkedin-icon.png"
-            alt="Linkedin icon"
-          />
-        </a>
-        <a href="/">
-          <img
-            class="h-12 w-12 hover:translate-y-1"
-            src="/assets/images/youtube-icon.png"
-            alt="Youtube icon"
-          />
-        </a>
+      <p class="mt-6 text-xl leading-9">Technologies I use:</p>
+
+      <div class="mb-6 mt-2 flex flex-wrap items-center gap-2">
+        <Tag color={ColorTags.RED}>HTML</Tag>
+        <Tag color={ColorTags.INDIGO}>CSS</Tag>
+        <Tag color={ColorTags.BLUE}>React</Tag>
+        <Tag color={ColorTags.SKY}>React Native</Tag>
+        <Tag color={ColorTags.ROSE}>NextJS</Tag>
+        <Tag color={ColorTags.VIOLET}>Gatsby</Tag>
+        <Tag color={ColorTags.FUCHSIA}>Astro</Tag>
+        <Tag color={ColorTags.SKY}>TypeScript</Tag>
+        <Tag color={ColorTags.YELLOW}>JavaScript</Tag>
+        <Tag color={ColorTags.STONE}>React Query</Tag>
+        <Tag color={ColorTags.LIME}>Redux</Tag>
+        <Tag color={ColorTags.ORANGE}>Tailwind CSS</Tag>
+        <Tag color={ColorTags.AMBER}>CSS Module</Tag>
+        <Tag color={ColorTags.GREEN}>CSS in JS</Tag>
+        <Tag color={ColorTags.CYAN}>Webpack</Tag>
+        <Tag color={ColorTags.PINK}>Vite</Tag>
+        <Tag color={ColorTags.TEAL}>Babel</Tag>
+        <Tag color={ColorTags.YELLOW}>Jest</Tag>
+        <Tag color={ColorTags.BLUE}>React Testing Library</Tag>
+        <Tag color={ColorTags.LIME}>Storybook</Tag>
+        <Tag color={ColorTags.FUCHSIA}>Srapi</Tag>
+        <Tag color={ColorTags.GREEN}>NodeJS</Tag>
+        <Tag color={ColorTags.VIOLET}>MySQL</Tag>
+        <Tag color={ColorTags.ZINC}>ExpressJS</Tag>
+        <Tag color={ColorTags.ORANGE}>Nginx</Tag>
+        <Tag color={ColorTags.AMBER}>Docker</Tag>
+        <Tag color={ColorTags.INDIGO}>Git</Tag>
+        <Tag color={ColorTags.TEAL}>Neovim</Tag>
       </div>
     </div>
 

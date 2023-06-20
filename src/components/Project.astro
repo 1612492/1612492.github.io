@@ -10,7 +10,7 @@ const { name, link, description } = Astro.props;
 
 <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 p-3 md:flex-row">
   <div class="shrink-0">
-    <a href={link}>
+    <a href={link} target="_blank" rel="noreferrer">
       <slot name="thumbnail" />
     </a>
   </div>

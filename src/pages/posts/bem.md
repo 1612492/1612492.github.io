@@ -1,10 +1,10 @@
 ---
 layout: '../../layouts/PostLayout.astro'
 title: BEM
-description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi.
+description: BEM - is a methodology that helps you to create reusable components and code sharing in front‑end development.
 pubDate: 2023-02-06T00:00:00Z
-imgSrc: '/assets/images/image-post4.jpeg'
-imgAlt: 'Image post'
+imgSrc: '/assets/images/bem.jpeg'
+imgAlt: 'BEM'
 ---
 
 > **[block]\_\_[element]--[modifier]**

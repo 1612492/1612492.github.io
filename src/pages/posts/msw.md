@@ -1,10 +1,10 @@
 ---
 layout: '../../layouts/PostLayout.astro'
 title: MSW
-description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi.
+description: Mock by intercepting requests on the network level. Seamlessly reuse the same mock definition for testing, development, and debugging.
 pubDate: 2022-06-12T00:00:00Z
-imgSrc: '/assets/images/image-post2.jpeg'
-imgAlt: 'Image post'
+imgSrc: '/assets/images/msw.jpeg'
+imgAlt: 'MSW'
 ---
 
 Framework use in this example: NextJS

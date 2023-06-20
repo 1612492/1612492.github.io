@@ -1,10 +1,10 @@
 ---
 layout: '../../layouts/PostLayout.astro'
 title: Flexbox
-description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi.
+description: Flexbox is a layout mechanism designed for laying out groups of items in one dimension.
 pubDate: 2022-08-06T00:00:00Z
-imgSrc: '/assets/images/image-post3.jpeg'
-imgAlt: 'Image post'
+imgSrc: '/assets/images/flexbox.webp'
+imgAlt: 'Flexbox'
 ---
 
 ## display:

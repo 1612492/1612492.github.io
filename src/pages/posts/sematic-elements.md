@@ -1,10 +1,10 @@
 ---
 layout: '../../layouts/PostLayout.astro'
 title: Semantic elements
-description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi.
+description: Using the correct HTML elements to describe your document content.
 pubDate: 2022-02-06T00:00:00Z
-imgSrc: '/assets/images/image-post.jpeg'
-imgAlt: 'Image post'
+imgSrc: '/assets/images/semantic-elements.webp'
+imgAlt: 'Semantic elements'
 ---
 
 ## Problem:
@@ -72,13 +72,13 @@ div.footer {
 
 ### Examples:
 
-![Layout 1](/src/images/sematic-elements1.jpg)
+![Layout 1](/src/images/semantic-elements1.jpg)
 
-![Layout 2](/src/images/sematic-elements2.jpg)
+![Layout 2](/src/images/semantic-elements2.jpg)
 
-![Layout 3](/src/images/sematic-elements3.jpg)
+![Layout 3](/src/images/semantic-elements3.jpg)
 
-![Layout 4](/src/images/sematic-elements4.jpg)
+![Layout 4](/src/images/semantic-elements4.jpg)
 
 ## Resources:
 

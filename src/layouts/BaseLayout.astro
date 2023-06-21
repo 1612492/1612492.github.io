@@ -34,18 +34,6 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82FQ53MZ8V"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-82FQ53MZ8V');
-    </script>
   </head>
   <body class="bg-slate-900 font-inter text-gray-100">
     <Navbar />

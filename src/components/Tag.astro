@@ -1,13 +1,28 @@
 ---
-import { colorToClasses } from '../utils/tag';
-
 export interface Props {
   color: string;
 }
 
 const { color } = Astro.props;
+
+const colors = {
+  red: 'bg-red-800 text-white',
+  orange: 'bg-orange-800 text-white',
+  amber: 'bg-amber-800 text-white',
+  lime: 'bg-lime-800 text-white',
+  green: 'bg-green-800 text-white',
+  emerald: 'bg-emerald-800 text-white',
+  teal: 'bg-teal-800 text-white',
+  cyan: 'bg-cyan-800 text-white',
+  sky: 'bg-sky-800 text-white',
+  blue: 'bg-blue-800 text-white',
+  indigo: 'bg-indigo-800 text-white',
+  violet: 'bg-violet-800 text-white',
+  purple: 'bg-purple-800 text-white',
+  fuchsia: 'bg-fuchsia-800 text-white',
+  pink: 'bg-pink-800 text-white',
+  rose: 'bg-rose-800 text-white',
+};
 ---
 
-<div class={`rounded-md px-2 py-1 text-xs font-semibold ${colorToClasses[color]}`}>
-  <slot />
-</div>
+<div class={`rounded-md px-2 py-1 text-xs font-semibold ${colors[color]}`}><slot /></div>

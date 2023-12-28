@@ -7,9 +7,9 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title}>
   <div class="mx-auto max-w-screen-lg px-3 py-6">
-    <h1 class="text-center text-3xl font-bold">{frontmatter.title}</h1>
+    <h1 class="text-center text-3xl font-semibold text-heading">{frontmatter.title}</h1>
 
-    <div class="mt-2 text-center text-sm text-gray-400">
+    <div class="mt-2 text-center text-sm">
       By {frontmatter.author} on{' '}
       {format(new Date(frontmatter.pubDate), 'LLL d, yyyy')}
     </div>

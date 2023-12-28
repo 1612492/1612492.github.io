@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 module.exports = {
-  plugins: [require.resolve('prettier-plugin-astro')],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   printWidth: 100,
   semi: true,
   singleQuote: true,
@@ -10,12 +10,6 @@ module.exports = {
       files: '*.astro',
       options: {
         parser: 'astro',
-      },
-    },
-    {
-      files: '*.svg',
-      options: {
-        parser: 'html',
       },
     },
   ],

@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/PostLayout.astro'
-title: Custom range input with CSS
+title: Custom range input
 description: Cross-browser compatible range inputs with CSS
 pubDate: 2023-07-28T07:00:00Z
 imgSrc: '/assets/images/range-input.jpeg'

@@ -1,0 +1,35 @@
+---
+import type { MarkdownInstance } from 'astro';
+import { format } from 'date-fns';
+
+type Props = {
+  post: MarkdownInstance<Record<string, any>>;
+};
+
+const { post } = Astro.props;
+---
+
+<a
+  class="overflow-hidden rounded-md bg-card transition-transform hover:translate-y-1"
+  href={post.url}
+>
+  <div class="aspect-h-2 aspect-w-3">
+    <img
+      class="h-full w-full object-cover object-center"
+      src={post.frontmatter.imgSrc}
+      alt={post.frontmatter.imgAlt}
+    />
+  </div>
+
+  <div class="px-3 pb-6 pt-4 text-center">
+    <h2 class="text-xl font-medium text-heading">{post.frontmatter.title}</h2>
+
+    <div class="mt-1 text-xs">
+      {format(new Date(post.frontmatter.pubDate), 'LLL d, yyyy')}
+    </div>
+
+    <div class="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm">
+      {post.frontmatter.description}
+    </div>
+  </div>
+</a>

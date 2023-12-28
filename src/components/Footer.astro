@@ -17,13 +17,13 @@ const links = [
 ---
 
 <div class="mx-auto max-w-screen-lg px-3 py-6">
-  <div class="border-t border-gray-600 pt-5 sm:flex sm:items-center sm:justify-between">
-    <div class="text-sm text-gray-200">© Copyright {new Date().getFullYear()} by Phat Vo.</div>
+  <div class="border-t border-main pt-5 sm:flex sm:items-center sm:justify-between">
+    <div class="text-sm text-heading">© Copyright {new Date().getFullYear()} by Phat Vo.</div>
     <div class="mt-4 flex gap-x-2 sm:mt-0">
       {
         links.map(({ url, alt, image }) => (
           <a href={url} aria-label={alt} target="_blank" rel="noreferrer">
-            <img src={image} alt={alt} width="32" height="32" />
+            <img src={image} alt={alt} class="h-8 w-8" />
           </a>
         ))
       }

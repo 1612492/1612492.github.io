@@ -1,6 +1,5 @@
 ---
-import { format } from 'date-fns';
-
+import PostCard from '../../components/PostCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths({ paginate }) {
@@ -15,34 +14,10 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<BaseLayout title="Eric's Blog">
+<BaseLayout title="Blog">
   <div class="mx-auto max-w-screen-lg px-3 py-6">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      {
-        page.data.map((post) => (
-          <a class="hover:translate-y-1" href={post.url}>
-            <div class="overflow-hidden rounded-md bg-slate-800">
-              <div class="aspect-h-2 aspect-w-3">
-                <img
-                  class="h-full w-full object-cover object-center"
-                  src={post.frontmatter.imgSrc}
-                  alt={post.frontmatter.imgAlt}
-                />
-              </div>
-
-              <div class="px-3 pb-6 pt-4 text-center">
-                <h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
-
-                <div class="mt-1 text-xs text-gray-400">
-                  {format(new Date(post.frontmatter.pubDate), 'LLL d, yyyy')}
-                </div>
-
-                <div class="mt-2 text-sm">{post.frontmatter.description}</div>
-              </div>
-            </div>
-          </a>
-        ))
-      }
+    <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3">
+      {page.data.map((post) => <PostCard post={post} />)}
     </div>
   </div>
 

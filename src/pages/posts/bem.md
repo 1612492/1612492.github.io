@@ -75,7 +75,7 @@ Modifier: Either a block or element may have a variation signified by a modifier
 }
 ```
 
-### Multi-work names
+### Multi-word names
 
 ```css
 /* Do this */

@@ -1,6 +1,6 @@
 ---
-import { format } from 'date-fns';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { format } from '../utils/date';
 
 const { frontmatter } = Astro.props;
 ---
@@ -10,8 +10,7 @@ const { frontmatter } = Astro.props;
     <h1 class="text-center text-3xl font-semibold text-heading">{frontmatter.title}</h1>
 
     <div class="mt-2 text-center text-sm">
-      By {frontmatter.author} on{' '}
-      {format(new Date(frontmatter.pubDate), 'LLL d, yyyy')}
+      {format(frontmatter.pubDate)}
     </div>
 
     <div class="mx-auto mt-5 max-w-prose">

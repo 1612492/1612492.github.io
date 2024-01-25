@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: ['./src/**/*.{astro,html}'],
   theme: {
     fontFamily: {
       base: 'Poppins, sans-serif',
@@ -39,4 +40,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/typography')],
-};
+} satisfies Config;

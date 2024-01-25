@@ -1,6 +1,6 @@
 ---
 import type { MarkdownInstance } from 'astro';
-import { format } from 'date-fns';
+import { format } from '../utils/date';
 
 type Props = {
   post: MarkdownInstance<Record<string, any>>;
@@ -25,7 +25,7 @@ const { post } = Astro.props;
     <h2 class="text-xl font-medium text-heading">{post.frontmatter.title}</h2>
 
     <div class="mt-1 text-xs">
-      {format(new Date(post.frontmatter.pubDate), 'LLL d, yyyy')}
+      {format(post.frontmatter.pubDate)}
     </div>
 
     <div class="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm">

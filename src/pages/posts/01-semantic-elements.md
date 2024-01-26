@@ -1,9 +1,9 @@
 ---
+id: 1
 layout: '../../layouts/PostLayout.astro'
 title: Semantic elements
 description: Using the correct HTML elements to describe your document content.
-pubDate: 2022-02-06T00:00:00Z
-image: '../images/semantic-elements.webp'
+date: 2022-02-06T00:00:00Z
 ---
 
 ## Problem:

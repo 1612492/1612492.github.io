@@ -1,9 +1,9 @@
 ---
+id: 3
 layout: '../../layouts/PostLayout.astro'
 title: BEM
 description: BEM - is a methodology that helps you to create reusable components and code sharing in front‑end development.
-pubDate: 2023-02-06T00:00:00Z
-image: '../images/bem.jpeg'
+date: 2023-02-06T00:00:00Z
 ---
 
 > **[block]\_\_[element]--[modifier]**

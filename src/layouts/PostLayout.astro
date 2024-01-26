@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { format } from '../utils/date';
+import { images } from '../utils/image';
 
 const { frontmatter } = Astro.props;
 ---
@@ -11,14 +12,14 @@ const { frontmatter } = Astro.props;
     <h1 class="text-center text-3xl font-semibold text-heading">{frontmatter.title}</h1>
 
     <div class="mt-2 text-center text-sm">
-      {format(frontmatter.pubDate)}
+      {format(frontmatter.date)}
     </div>
 
     <div class="mx-auto mt-5 max-w-prose">
       <div class="aspect-h-2 aspect-w-3">
         <Image
           class="h-full w-full rounded-lg object-cover object-center"
-          src={import(frontmatter.image)}
+          src={images[frontmatter.id]}
           alt={frontmatter.title}
         />
       </div>

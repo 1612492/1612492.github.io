@@ -2,6 +2,7 @@
 import type { MarkdownInstance } from 'astro';
 import { Image } from 'astro:assets';
 import { format } from '../utils/date';
+import { images } from '../utils/image';
 
 type Props = {
   post: MarkdownInstance<Record<string, any>>;
@@ -15,7 +16,7 @@ const { url, frontmatter } = post;
   <div class="aspect-h-2 aspect-w-3">
     <Image
       class="h-full w-full object-cover object-center"
-      src={import(frontmatter.image)}
+      src={images[frontmatter.id]}
       alt={frontmatter.title}
     />
   </div>
@@ -24,7 +25,7 @@ const { url, frontmatter } = post;
     <h2 class="text-xl font-medium text-heading">{frontmatter.title}</h2>
 
     <div class="mt-1 text-xs">
-      {format(frontmatter.pubDate)}
+      {format(frontmatter.date)}
     </div>
 
     <div class="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm">

@@ -1,5 +1,6 @@
 ---
 import type { MarkdownInstance } from 'astro';
+import { Image } from 'astro:assets';
 import { format } from '../utils/date';
 
 type Props = {
@@ -7,29 +8,27 @@ type Props = {
 };
 
 const { post } = Astro.props;
+const { url, frontmatter } = post;
 ---
 
-<a
-  class="overflow-hidden rounded-md bg-card transition-transform hover:translate-y-1"
-  href={post.url}
->
+<a class="overflow-hidden rounded-md bg-card transition-transform hover:translate-y-1" href={url}>
   <div class="aspect-h-2 aspect-w-3">
-    <img
+    <Image
       class="h-full w-full object-cover object-center"
-      src={post.frontmatter.imgSrc}
-      alt={post.frontmatter.imgAlt}
+      src={import(frontmatter.image)}
+      alt={frontmatter.title}
     />
   </div>
 
   <div class="px-3 pb-6 pt-4 text-center">
-    <h2 class="text-xl font-medium text-heading">{post.frontmatter.title}</h2>
+    <h2 class="text-xl font-medium text-heading">{frontmatter.title}</h2>
 
     <div class="mt-1 text-xs">
-      {format(post.frontmatter.pubDate)}
+      {format(frontmatter.pubDate)}
     </div>
 
     <div class="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm">
-      {post.frontmatter.description}
+      {frontmatter.description}
     </div>
   </div>
 </a>

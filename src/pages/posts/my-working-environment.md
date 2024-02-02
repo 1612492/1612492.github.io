@@ -1,9 +1,9 @@
 ---
-id: 4
 layout: '../../layouts/PostLayout.astro'
 title: My working environment
 description: Setup working environment with Kitty,Tmux, Neovim.
 date: 2024-01-27T00:00:00Z
+thumbnail: '/src/pages/posts/my-working-environment/thumbnail.jpg'
 ---
 
 ## OS (Manjaro)

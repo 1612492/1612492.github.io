@@ -1,9 +1,9 @@
 ---
-id: 2
 layout: '../../layouts/PostLayout.astro'
 title: MSW
 description: Mock by intercepting requests on the network level. Seamlessly reuse the same mock definition for testing, development, and debugging.
 date: 2022-06-12T00:00:00Z
+thumbnail: '/src/pages/posts/msw/thumbnail.jpg'
 ---
 
 Framework use in this example: NextJS

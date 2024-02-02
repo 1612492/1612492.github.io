@@ -1,9 +1,9 @@
 ---
-id: 1
 layout: '../../layouts/PostLayout.astro'
 title: Semantic elements
 description: Using the correct HTML elements to describe your document content.
 date: 2022-02-06T00:00:00Z
+thumbnail: '/src/pages/posts/semantic-elements/thumbnail.jpg'
 ---
 
 ## Problem:
@@ -71,13 +71,13 @@ div.footer {
 
 ### Examples:
 
-![Layout 1](../../images/semantic-elements1.jpg)
+![Layout 1](./semantic-elements/example1.jpg)
 
-![Layout 2](../../images/semantic-elements2.jpg)
+![Layout 2](./semantic-elements/example2.jpg)
 
-![Layout 3](../../images/semantic-elements3.jpg)
+![Layout 3](./semantic-elements/example3.jpg)
 
-![Layout 4](../../images/semantic-elements4.jpg)
+![Layout 4](./semantic-elements/example4.jpg)
 
 ## Resources:
 

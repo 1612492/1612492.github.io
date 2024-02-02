@@ -1,8 +1,7 @@
 ---
-import type { MarkdownInstance } from 'astro';
+import type { ImageMetadata, MarkdownInstance } from 'astro';
 import { Image } from 'astro:assets';
 import { format } from '../utils/date';
-import { images } from '../utils/image';
 
 type Props = {
   post: MarkdownInstance<Record<string, any>>;
@@ -10,15 +9,13 @@ type Props = {
 
 const { post } = Astro.props;
 const { url, frontmatter } = post;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/pages/posts/**/*.{jpg,png}');
+const thumbnail = images[frontmatter.thumbnail]();
 ---
 
 <a class="overflow-hidden rounded-md bg-card transition-transform hover:translate-y-1" href={url}>
   <div class="aspect-h-2 aspect-w-3">
-    <Image
-      class="h-full w-full object-cover object-center"
-      src={images[frontmatter.id]}
-      alt={frontmatter.title}
-    />
+    <Image class="h-full w-full object-cover object-center" src={thumbnail} alt="thumbnail" />
   </div>
 
   <div class="px-3 pb-6 pt-4 text-center">

@@ -1,10 +1,12 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { format } from '../utils/date';
-import { images } from '../utils/image';
 
 const { frontmatter } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/pages/posts/**/*.{jpg,png}');
+const thumbnail = images[frontmatter.thumbnail]();
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -19,8 +21,8 @@ const { frontmatter } = Astro.props;
       <div class="aspect-h-2 aspect-w-3">
         <Image
           class="h-full w-full rounded-lg object-cover object-center"
-          src={images[frontmatter.id]}
-          alt={frontmatter.title}
+          src={thumbnail}
+          alt="thumbnail"
         />
       </div>
 

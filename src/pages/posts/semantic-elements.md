@@ -71,13 +71,13 @@ div.footer {
 
 ### Examples:
 
-![Layout 1](./semantic-elements/example1.jpg)
+![Example 1](./semantic-elements/example1.jpg)
 
-![Layout 2](./semantic-elements/example2.jpg)
+![Example 2](./semantic-elements/example2.jpg)
 
-![Layout 3](./semantic-elements/example3.jpg)
+![Example 3](./semantic-elements/example3.jpg)
 
-![Layout 4](./semantic-elements/example4.jpg)
+![Example 4](./semantic-elements/example4.jpg)
 
 ## Resources:
 

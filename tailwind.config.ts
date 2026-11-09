@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./src/**/*.{astro,html}'],
   theme: {
     fontFamily: {
       base: 'Poppins, sans-serif',
@@ -39,5 +38,4 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/typography')],
 } satisfies Config;

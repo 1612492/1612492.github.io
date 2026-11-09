@@ -14,16 +14,14 @@ const thumbnail = images[frontmatter.thumbnail]();
 ---
 
 <a class="overflow-hidden rounded-md bg-card transition-transform hover:translate-y-1" href={url}>
-  <div class="aspect-h-2 aspect-w-3">
+  <div class="aspect-[3/2]">
     <Image class="h-full w-full object-cover object-center" src={thumbnail} alt="thumbnail" />
   </div>
 
   <div class="px-3 pb-6 pt-4 text-center">
     <h2 class="text-xl font-medium text-heading">{frontmatter.title}</h2>
 
-    <div class="mt-1 text-xs">
-      {format(frontmatter.date)}
-    </div>
+    <div class="mt-1 text-xs">{format(frontmatter.date)}</div>
 
     <div class="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm">
       {frontmatter.description}

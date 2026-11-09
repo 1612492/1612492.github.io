@@ -1,295 +1,96 @@
 ---
 layout: '../../layouts/PostLayout.astro'
-title: My working environment
-description: Setup working environment with Kitty, Tmux, Neovim.
+title: My terminal and editor setup
+description: A tour of a Manjaro, Kitty, tmux, zsh, and Neovim setup, with the configuration choices that matter most.
 date: 2024-01-27T00:00:00Z
 thumbnail: '/src/pages/posts/my-working-environment/thumbnail.jpg'
 ---
 
-## OS (Manjaro)
+This is a snapshot of the development environment I used when I first wrote this post in **2024**, not a list of current or required tool versions. My setup combines a terminal, a multiplexer, a shell, and an editor so I can stay in one workflow across projects.
 
-**yay**
+## Manjaro and a Nerd Font
 
-```bash
-pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-```
+I used Manjaro and installed packages from its repositories or the AUR with `yay`. If you need `yay`, follow its [current installation instructions](https://github.com/Jguer/yay#installation); AUR packages are community-maintained, so review them before installing.
 
-**Nerd font (Iosevka)**
+For terminal glyphs and icons, I used [IosevkaTerm Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IosevkaTerm). Install the font on your system before setting it as your terminal font.
 
-[https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IosevkaTerm/Regular](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IosevkaTerm/Regular)
+## Kitty: the terminal
 
-## Terminal (kitty)
+Kitty handles rendering, fonts, and the color theme. My configuration lives in `~/.config/kitty/kitty.conf`:
 
-```bash
-yay -S kitty
-```
-
-**kitty.conf** (~/.config/kitty/kitty.conf)
-
-Theme: [**catppuccin**](https://github.com/catppuccin/kitty)
-
-```bash
-font_family      IosevkaTerm Nerd Font
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-
+```text
+font_family IosevkaTerm Nerd Font
 font_size 12.0
-
 background_opacity 1
-hide_window_decorations true
-shell_integration no-cursor
+cursor_shape block
 window_margin_width 10
-
-# The basic colors
-foreground              #CDD6F4
-background              #1E1E2E
-selection_foreground    #1E1E2E
-selection_background    #F5E0DC
-
-# Cursor colors
-cursor                  #F5E0DC
-cursor_text_color       #1E1E2E
-cursor_shape            block
-
-# URL underline color when hovering with mouse
-url_color               #F5E0DC
-
-# Kitty window border colors
-active_border_color     #B4BEFE
-inactive_border_color   #6C7086
-bell_border_color       #F9E2AF
-
-# OS Window titlebar colors
-wayland_titlebar_color system
-macos_titlebar_color system
-
-# Tab bar colors
-active_tab_foreground   #11111B
-active_tab_background   #CBA6F7
-inactive_tab_foreground #CDD6F4
-inactive_tab_background #181825
-tab_bar_background      #11111B
-
-# Colors for marks (marked text in the terminal)
-mark1_foreground #1E1E2E
-mark1_background #B4BEFE
-mark2_foreground #1E1E2E
-mark2_background #CBA6F7
-mark3_foreground #1E1E2E
-mark3_background #74C7EC
-
-# The 16 terminal colors
-
-# black
-color0 #45475A
-color8 #585B70
-
-# red
-color1 #F38BA8
-color9 #F38BA8
-
-# green
-color2  #A6E3A1
-color10 #A6E3A1
-
-# yellow
-color3  #F9E2AF
-color11 #F9E2AF
-
-# blue
-color4  #89B4FA
-color12 #89B4FA
-
-# magenta
-color5  #F5C2E7
-color13 #F5C2E7
-
-# cyan
-color6  #94E2D5
-color14 #94E2D5
-
-# white
-color7  #BAC2DE
-color15 #A6ADC8
 ```
 
-## Terminal multiplexer (Tmux)
+For the palette, I used [Catppuccin for Kitty](https://github.com/catppuccin/kitty). Keeping the theme separate from the small set of personal settings makes it easier to change colors later without touching the rest of the configuration.
 
-```bash
-yay -S tmux
-```
+## tmux: persistent sessions and panes
 
-**Tmux Plugin Manager (tpm)**
+tmux keeps a session running when I detach from the terminal. I changed the prefix to `Ctrl-a`, enabled mouse support, and made new panes inherit the current working directory:
 
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-**.tmux.conf** (~/.tmux.conf)
-
-```bash
-# Configuration
+```text
+# ~/.tmux.conf
 set -g mouse on
 set -g default-terminal "screen-256color"
-set -g terminal-overrides ",xterm-256color*:Tc"
-set -g status-style bg=default
-set-option -sg escape-time 10
-set-option -g focus-events on
-set-window-option -g mode-keys vi
-
-# Key binding
-set-option -g prefix C-a
+set -g prefix C-a
 bind-key C-a send-prefix
 
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
-
-unbind \"
-unbind %
 bind-key e split-window -h -c '#{pane_current_path}'
 bind-key v split-window -v -c '#{pane_current_path}'
-bind-key c new-window -c "#{pane_current_path}"
+bind-key c new-window -c '#{pane_current_path}'
 
-bind-key -r -T prefix k select-pane -U
-bind-key -r -T prefix j select-pane -D
-bind-key -r -T prefix h select-pane -L
-bind-key -r -T prefix l select-pane -R
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send -X begin-selection
 bind-key r source-file ~/.tmux.conf \; display-message "Reloaded"
-
-# Plugin
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-open'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'tmux-plugins/tmux-yank'
-
-set -g @resurrect-dir '~/.tmux/sessions'
-set -g @continuum-restore 'on'
-set -g @yank_selection_mouse 'clipboard'
-
-# Status line
-set -g status-left-length 30
-set -g status-left "#[fg=#181825,bg=#89B4FA,bold]  #S  "
-set -g status-right '#{?client_prefix,#[fg=#89b4fa],}'
-setw -g window-status-format "#[fg=#585B70,bg=#181825]  #I #W  "
-setw -g window-status-current-format "#[fg=#89B4FA,bg=#45475A]  #I #[fg=#CDD6F4,bg=#45475A]#W  "
-setw -g window-status-separator ""
-
-run '~/.tmux/plugins/tpm/tpm'
 ```
 
-Install plugins:
+The `-c '#{pane_current_path}'` part saves a small but frequent annoyance: a new pane opens in the directory I am already using.
 
-- https://github.com/tmux-plugins/tmux-open: open highlighted selection directly from tmux copy mode.
-- https://github.com/tmux-plugins/tmux-resurrect: Restore and save tmux session
-- https://github.com/tmux-plugins/tmux-continuum: Restore session when tmux is started.
-- https://github.com/tmux-plugins/tmux-yank: copy to system clipboard.
+I managed plugins with [TPM](https://github.com/tmux-plugins/tpm), including [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) for saving sessions, [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) for automatic persistence, and [tmux-yank](https://github.com/tmux-plugins/tmux-yank) for clipboard integration. After declaring plugins in `.tmux.conf`, TPM installs them with `~/.tmux/plugins/tpm/bin/install_plugins`.
 
-```bash
-~/.tmux/plugins/tpm/bin/install_plugins
+## zsh: shortcuts and versions
+
+My shell setup used [Oh My Zsh](https://ohmyz.sh/), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), and a few small settings:
+
+```sh
+# ~/.zshrc (excerpt)
+export EDITOR=nvim
+alias v='nvim'
+
+plugins=(
+  vi-mode
+  zsh-autosuggestions
+)
 ```
 
-## Shell (zsh)
+I used [asdf](https://asdf-vm.com/) to pin project tools. At the time, my `~/.tool-versions` looked like this:
 
-**oh-my-zsh**
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-**zsh-autosuggestions**
-
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-
-**asdf**
-
-```bash
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-```
-
-```bash
-asdf plugin add nodejs
-asdf plugin add yarn
-asdf plugin add pnpm
-
-asdf install nodejs 20.11.0
-asdf install yarn 1.22.19
-asdf install pnpm 8.14.3
-```
-
-**.tool-versions** (~/.tool-versions)
-
-```bash
+```text
 nodejs 20.11.0
 yarn 1.22.19
 pnpm 8.14.3
 ```
 
-**.zshrc** (~/.zshrc)
+Those versions document the 2024 setup; they are **not** recommendations for new projects. Check each tool's current installation instructions and use the versions your project requires.
 
-```bash
-ZSH_THEME="robbyrussell"
-plugins=(
-  asdf
-  vi-mode
-  zsh-autosuggestions
-)
+## Neovim: the editor
 
-alias v='nvim'
+I keep Neovim's configuration in `~/.config/nvim`. `init.lua` loads settings and Lua modules for keymaps, options, plugins, and language tooling:
 
-export ZSH=$HOME/.oh-my-zsh
-export EDITOR=nvim
-
-source $ZSH/oh-my-zsh.sh
-```
-
-Reload config
-
-```bash
-source .zshrc
-```
-
-## Editor (Neovim)
-
-```bash
-yay -S neovim
-```
-
-```bash
-~/.config/nvim
+```text
+~/.config/nvim/
 ├── init.lua
 ├── lazy-lock.json
-├── lua
-│   ├── bootstrap.lua
-│   ├── keymap.lua
-│   ├── option.lua
-│   └── plugins
-│       ├── code.lua
-│       ├── editor.lua
-│       ├── lsp.lua
-│       ├── theme.lua
-│       └── ui.lua
-├── package.json
-├── prettier.config.js
-├── snippets
-│   ├── common.json
-│   ├── css.json
-│   ├── html.json
-│   ├── javascript.json
-│   └── react.json
-└── stylua.toml
+├── lua/
+│   ├── bootstrap.lua
+│   ├── keymap.lua
+│   ├── option.lua
+│   └── plugins/
+└── snippets/
 ```
 
-The full config: [https://github.com/1612492/dotfiles/tree/main/nvim](https://github.com/1612492/dotfiles/tree/main/nvim)
-
-Installation script: (copy kitty, tmux, zsh, neovim config)
-
-```lua
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/1612492/dotfiles/main/install.sh)"
-```
+The full configuration is in my [dotfiles repository](https://github.com/1612492/dotfiles/tree/main/nvim). Read and adapt configuration files before copying them into your own setup; a terminal workflow is most useful when it fits how **you** work.

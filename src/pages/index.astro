@@ -1,17 +1,18 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import Hero from '../components/Hero.astro';
 import RecentPosts from '../components/RecentPosts.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const posts = await Astro.glob('./posts/*.md');
+const posts = Object.values(
+  import.meta.glob<MarkdownInstance<Record<string, any>>>('./posts/*.md', { eager: true })
+);
 const lastThreePosts = posts
-  .sort(
-    (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
-  )
+  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
   .slice(0, 3);
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Full-stack developer">
   <Hero />
   <RecentPosts posts={lastThreePosts} />
 </BaseLayout>

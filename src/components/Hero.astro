@@ -1,62 +1,60 @@
 ---
 import { Image } from 'astro:assets';
 import avatar from '../images/avatar.svg';
+
+const skills = [
+  { name: 'React', color: 'bg-blue' },
+  { name: 'Next.js', color: 'bg-indigo' },
+  { name: 'TanStack Start', color: 'bg-sky' },
+  { name: 'React Native', color: 'bg-cyan' },
+  { name: 'TypeScript', color: 'bg-blue' },
+  { name: 'Node.js', color: 'bg-green' },
+  { name: 'Hono', color: 'bg-orange' },
+  { name: 'Express', color: 'bg-teal' },
+  { name: 'PostgreSQL', color: 'bg-emerald' },
+  { name: 'REST', color: 'bg-lime' },
+  { name: 'GraphQL', color: 'bg-pink' },
+  { name: 'Blockchain indexers', color: 'bg-violet' },
+  { name: 'Web3', color: 'bg-purple' },
+  { name: 'Vitest', color: 'bg-amber' },
+  { name: 'AI-assisted development', color: 'bg-fuchsia' },
+];
 ---
 
-<div class="mx-auto max-w-screen-lg px-3 py-6">
+<section class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
     <div>
       <h1 class="text-3xl font-semibold text-heading">
-        Hi there, I'm{' '}
-        <span class="text-primary"> Phat</span>{' '}👋
+        Hi there, I'm <span class="text-primary">Phat</span> 👋
       </h1>
 
       <p class="mt-6 leading-9">
-        With more than 4 years of experience, I am a proficient and qualified <span
-          class="text-primary"
-          >front-end
-        </span>developer. I am also knowledgeable about <span class="text-primary">back-end</span> and
-        <span class="text-cyan-400">blockchain</span> technology thanks to my curiosity and love of technology.
+        I'm a full-stack developer building web and mobile products with React, TypeScript, and
+        Node.js. I turn complex APIs, data pipelines, and blockchain integrations into reliable
+        experiences, using AI tools to work efficiently and verify the results.
       </p>
 
-      <p class="mt-6 leading-9 text-heading">Technologies I use:</p>
+      <h2 class="mt-6 font-semibold text-heading">Skills & tools</h2>
+      <ul class="mt-3 flex flex-wrap gap-2">
+        {skills.map(({ name, color }) => (
+          <li class:list={['rounded-md px-3 py-1 text-sm font-medium text-heading', color]}>
+            {name}
+          </li>
+        ))}
+      </ul>
 
-      <div class="mb-6 mt-2 flex flex-wrap items-center gap-2">
-        <div class="text-white rounded-md bg-red px-2 py-1 text-xs font-medium">HTML</div>
-        <div class="text-white rounded-md bg-orange px-2 py-1 text-xs font-medium">CSS</div>
-        <div class="text-white rounded-md bg-blue px-2 py-1 text-xs font-medium">React</div>
-        <div class="text-white rounded-md bg-sky px-2 py-1 text-xs font-medium">React Native</div>
-        <div class="text-white rounded-md bg-rose px-2 py-1 text-xs font-medium">NextJS</div>
-        <div class="text-white rounded-md bg-violet px-2 py-1 text-xs font-medium">Gatsby</div>
-        <div class="text-white rounded-md bg-fuchsia px-2 py-1 text-xs font-medium">Astro</div>
-        <div class="text-white rounded-md bg-sky px-2 py-1 text-xs font-medium">TypeScript</div>
-        <div class="text-white rounded-md bg-amber px-2 py-1 text-xs font-medium">JavaScript</div>
-        <div class="text-white rounded-md bg-red px-2 py-1 text-xs font-medium">React Query</div>
-        <div class="text-white rounded-md bg-lime px-2 py-1 text-xs font-medium">Redux</div>
-        <div class="text-white rounded-md bg-cyan px-2 py-1 text-xs font-medium">Tailwind CSS</div>
-        <div class="text-white rounded-md bg-teal px-2 py-1 text-xs font-medium">CSS Module</div>
-        <div class="text-white rounded-md bg-indigo px-2 py-1 text-xs font-medium">CSS in JS</div>
-        <div class="text-white rounded-md bg-purple px-2 py-1 text-xs font-medium">Webpack</div>
-        <div class="text-white rounded-md bg-pink px-2 py-1 text-xs font-medium">Vite</div>
-        <div class="text-white rounded-md bg-rose px-2 py-1 text-xs font-medium">Babel</div>
-        <div class="text-white rounded-md bg-emerald px-2 py-1 text-xs font-medium">Jest</div>
-        <div class="text-white rounded-md bg-blue px-2 py-1 text-xs font-medium">
-          React Testing Library
-        </div>
-        <div class="text-white rounded-md bg-lime px-2 py-1 text-xs font-medium">Storybook</div>
-        <div class="text-white rounded-md bg-fuchsia px-2 py-1 text-xs font-medium">Srapi</div>
-        <div class="text-white rounded-md bg-green px-2 py-1 text-xs font-medium">NodeJS</div>
-        <div class="text-white rounded-md bg-violet px-2 py-1 text-xs font-medium">MySQL</div>
-        <div class="text-white rounded-md bg-lime px-2 py-1 text-xs font-medium">ExpressJS</div>
-        <div class="text-white rounded-md bg-violet px-2 py-1 text-xs font-medium">Nginx</div>
-        <div class="text-white rounded-md bg-sky px-2 py-1 text-xs font-medium">Docker</div>
-        <div class="text-white rounded-md bg-indigo px-2 py-1 text-xs font-medium">Git</div>
-        <div class="text-white rounded-md bg-teal px-2 py-1 text-xs font-medium">Neovim</div>
+      <div class="mt-6 flex flex-wrap gap-4 font-medium">
+        <a class="text-primary hover:text-heading" href="mailto:votanphatb2@gmail.com">
+          Get in touch →
+        </a>
+        <a class="text-primary hover:text-heading" href="https://github.com/1612492">
+          GitHub →
+        </a>
       </div>
     </div>
 
     <div class="shrink-0">
-      <Image src={avatar} alt="avatar" class="h-80 w-64" />
+      <Image src={avatar} alt="Illustration of Phat Vo" class="h-80 w-64" />
     </div>
   </div>
-</div>
+</section>

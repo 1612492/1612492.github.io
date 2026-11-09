@@ -2,18 +2,8 @@
 import { Image } from 'astro:assets';
 import github from '../images/github.svg';
 import linkedin from '../images/linkedin.svg';
-import telegram from '../images/telegram.svg';
-import twitter from '../images/twitter.svg';
-import upwork from '../images/upwork.svg';
 
 const links = [
-  { url: 'https://twitter.com/phatvo0509', alt: 'twitter', image: twitter },
-  { url: 'https://t.me/phatvo0509', alt: 'telegram', image: telegram },
-  {
-    url: 'https://www.upwork.com/freelancers/~0159b9276096d9cc7b',
-    alt: 'upwork',
-    image: upwork,
-  },
   { url: 'https://github.com/1612492', alt: 'github', image: github },
   {
     url: 'https://www.linkedin.com/in/phat-vo98',
@@ -26,14 +16,15 @@ const links = [
 <div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="border-t border-main pt-5 sm:flex sm:items-center sm:justify-between">
     <div class="text-sm text-heading">© Copyright {new Date().getFullYear()} by Phat Vo.</div>
-    <div class="mt-4 flex gap-x-2 sm:mt-0">
-      {
-        links.map(({ url, alt, image }) => (
-          <a href={url} aria-label={alt} target="_blank" rel="noreferrer">
-            <Image src={image} alt={alt} class="h-8 w-8" />
-          </a>
-        ))
-      }
+    <div class="mt-4 flex items-center gap-x-3 sm:mt-0">
+      <a class="text-sm hover:text-heading" href="mailto:votanphatb2@gmail.com">
+        Email
+      </a>
+      {links.map(({ url, alt, image }) => (
+        <a href={url} aria-label={alt} target="_blank" rel="noreferrer">
+          <Image src={image} alt={alt} class="h-8 w-8" />
+        </a>
+      ))}
     </div>
   </div>
 </div>

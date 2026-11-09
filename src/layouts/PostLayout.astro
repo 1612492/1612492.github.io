@@ -9,16 +9,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/pages/posts/**
 const thumbnail = images[frontmatter.thumbnail]();
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <h1 class="text-center text-3xl font-semibold text-heading">{frontmatter.title}</h1>
 
-    <div class="mt-2 text-center text-sm">
-      {format(frontmatter.date)}
-    </div>
+    <div class="mt-2 text-center text-sm">{format(frontmatter.date)}</div>
 
     <div class="mx-auto mt-5 max-w-prose">
-      <div class="aspect-h-2 aspect-w-3">
+      <div class="aspect-[3/2]">
         <Image
           class="h-full w-full rounded-lg object-cover object-center"
           src={thumbnail}

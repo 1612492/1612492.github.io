@@ -1,75 +1,71 @@
 ---
 layout: '../../layouts/PostLayout.astro'
-title: Vim highlight groups
-description: Basic vim highlight groups.
+title: A visual guide to Vim highlight groups
+description: Find the highlight group that controls line numbers, selections, popups, searches, and other editor UI.
 date: 2024-02-02T00:00:00Z
 thumbnail: '/src/pages/posts/vim-highlight-groups/thumbnail.jpg'
 ---
 
-![groups](./vim-highlight-groups/groups1.png)
+Vim and Neovim assign **highlight groups** to pieces of the editor UI. A colorscheme styles those groups; knowing their names makes it easier to adjust the part of the editor you actually want to change.
 
-`ColorColumn` column when set with 'colorcolumn'.
+In Neovim, inspect the style of a group with `:hi GroupName`. For example, `:hi CursorLineNr` shows the highlight used for the number on the cursor line. You can try a change with `:hi CursorLineNr guifg=#f5c2e7` (the exact color is up to you).
 
-`CursorLine` line at the cursor.
+## Gutter and cursor line
 
-`FoldColumn` column when set 'foldcolumn’
+![Editor gutter and cursor-line highlight groups](./vim-highlight-groups/groups1.png)
 
-`SignColumn` column where signs are displayed.
+| Group                               | What it styles                                          |
+| ----------------------------------- | ------------------------------------------------------- |
+| `ColorColumn`                       | Columns marked by the `colorcolumn` option.             |
+| `CursorLine`                        | The line under the cursor when `cursorline` is enabled. |
+| `FoldColumn`                        | The fold column.                                        |
+| `SignColumn`                        | The column containing signs, such as diagnostics.       |
+| `LineNr`                            | Line numbers shown by `number` or `relativenumber`.     |
+| `LineNrAbove` / `LineNrBelow`       | Relative line numbers above and below the cursor.       |
+| `CursorLineNr`                      | The line number on the cursor line.                     |
+| `CursorLineFold` / `CursorLineSign` | The fold and sign columns on the cursor line.           |
 
-`LineNr` line number when set 'number’ or 'relativenumber'
+## Menus and messages
 
-`LineNrAbove` line number for when set 'relativenumber', above the cursor line.
+| Group                      | What it styles                          |
+| -------------------------- | --------------------------------------- |
+| `Pmenu` / `PmenuSel`       | Popup-menu items and the selected item. |
+| `PmenuSbar` / `PmenuThumb` | The popup-menu scrollbar and its thumb. |
+| `MsgArea`                  | The command-line message area.          |
 
-`LineNrBelow` line number for when set 'relativenumber', below the cursor line.
+## Text, search, and windows
 
-`CursorLineNr` like LineNr when 'cursorline' is set for the cursor line.
+![Text and window highlight groups](./vim-highlight-groups/groups2.png)
 
-`CursorLineFold` like FoldColumn when 'cursorline' is set for the cursor line.
-`CursorLineSign` like SignColumn when 'cursorline' is set for the cursor line.
+| Group                         | What it styles                                        |
+| ----------------------------- | ----------------------------------------------------- |
+| `Normal` / `NormalNC`         | Ordinary text in the current and non-current windows. |
+| `Cursor`                      | The character cell under the cursor.                  |
+| `Search`                      | Matches for the last search pattern.                  |
+| `CurSearch`                   | The current search match.                             |
+| `StatusLine` / `StatusLineNC` | Status lines in the current and non-current windows.  |
+| `WinSeparator`                | The separator between split windows.                  |
 
-`Pmenu` popup menu: Normal item.
-`PmenuSel` popup menu: Selected item.
-`PmenuSbar` popup menu: Scrollbar.
-`PmenuThumb` popup menu: Thumb of the scrollbar.
+## Selections and substitutions
 
-`MsgArea` area for messages and cmdline.
+![Visual selection highlight](./vim-highlight-groups/groups3.png)
 
-![groups](./vim-highlight-groups/groups2.png)
+`Visual` styles the text selected in Visual mode.
 
-`Cursor` character under the cursor.
+![Search and substitute highlight groups](./vim-highlight-groups/groups4.png)
 
-`CurSearch` used for highlighting a search pattern under the cursor.
+`IncSearch` highlights a match during an incremental search. `Substitute` styles replacement text during a substitution preview.
 
-`Normal` normal text.
+## Other useful groups
 
-`NormalNC` normal text in non-current windows.
+![Additional editor highlight groups](./vim-highlight-groups/groups5.png)
 
-`Search` last search pattern highlighting.
+| Group       | What it styles                         |
+| ----------- | -------------------------------------- |
+| `Directory` | Directory names in file listings.      |
+| `ErrorMsg`  | Error messages.                        |
+| `Folded`    | The text shown for a closed fold.      |
+| `ModeMsg`   | Mode messages, such as `-- INSERT --`. |
+| `Question`  | Prompts and questions.                 |
 
-`StatusLine` status line of current window.
-
-`StatusLineNC` status lines of not-current windows.
-
-`WinSeparator` separators between window splits.
-
-![groups](./vim-highlight-groups/groups3.png)
-
-`Visual` visual mode selection.
-
-![groups](./vim-highlight-groups/groups4.png)
-
-`IncSearch` used for the text replaced with.
-
-`Substitute` replacement text highlighting.
-
-![groups](./vim-highlight-groups/groups5.png)
-
-`Directory` directory names.
-
-`ErrorMsg` error messages on the command line.
-
-`Folded` line used for closed folds.
-
-`ModeMsg` 'showmode' message (e.g., "-- INSERT --").
-
-`Question` hit-enter prompt and yes/no questions.
+Group availability and appearance can vary by Vim/Neovim version and colorscheme. To explore more, run `:help highlight-groups` in your editor.
